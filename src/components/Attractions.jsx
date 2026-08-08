@@ -33,9 +33,9 @@ const attractionsData = [
   }
 ]
 
-function Attractions() {
+function Attractions({ tripList, addToTrip }) {
   return (
-    <div className="attractions">
+    <div className="attractions" id="attractions">
       <h2>Top A<span className="underline">ttrac</span>tions</h2>
       <p>Discover the must-visit places in Prayagraj</p>
       <div className="attraction-menu">
@@ -45,6 +45,8 @@ function Attractions() {
             title={item.title}
             description={item.description}
             image={item.image}
+            tripList={tripList}
+            addToTrip={addToTrip}
           />
         ))}
       </div>
