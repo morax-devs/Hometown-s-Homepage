@@ -312,3 +312,65 @@ h1 {
     color: #6b6b6b;
     cursor: not-allowed;
 }
+
+/* ------------------------NavBar--------------------------- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #FFF7ED;
+}
+
+.nav-logo {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #101828;
+    font-weight: 600;
+}
+
+.nav-links a.active {
+    color: #FF6900;
+}
+
+.trip-badge {
+    background-color: #FF6900;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* ---------------------------MyTrip------------------------------------- */
+
+.my-trip {
+    padding: 60px 10%;
+    min-height: 70vh;   
+}
+
+.trip-list {
+    max-width: 500px;
+    margin: 20px auto 0;
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.trip-list li {
+    background-color: #FFF7ED;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}

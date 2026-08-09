@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Hero from './components/Hero'
-import About from './components/About'  
-import Attractions from './components/Attractions'
-import ThingsToDo from './components/ThingsToDo'
-import VisitInfo from './components/VisitInfo'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import AttractionsPage from './pages/AttractionsPage'
+import RestaurantsPage from './pages/RestaurantsPage'
+import StayPage from './pages/StayPage'
+import MyTrip from './pages/MyTrip'
 import Footer from './components/Footer'
 
 function App() {
@@ -17,14 +19,17 @@ function App() {
   }
 
   return (
-    <div>
-      <Hero />
-      <About />
-      <Attractions tripList={tripList} addToTrip={addToTrip} />
-      <ThingsToDo />
-      <VisitInfo />
+    <BrowserRouter>
+      <Navbar tripCount={tripList.length} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/attractions" element={<AttractionsPage tripList={tripList} addToTrip={addToTrip} />} />
+        <Route path="/my-trip" element={<MyTrip tripList={tripList} />} />
+        <Route path="/restaurants" element={<RestaurantsPage tripList={tripList} addToTrip={addToTrip} />} />
+        <Route path="/stay" element={<StayPage tripList={tripList} addToTrip={addToTrip} />} />
+      </Routes>
       <Footer />
-    </div>
+    </BrowserRouter>
   )
 }
 
