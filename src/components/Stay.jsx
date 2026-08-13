@@ -27,8 +27,8 @@ const stayData = [
 function Stay({ tripList, addToTrip }) {
   return (
     <div className="attractions">
-      <h2>Where to <span className="underline">Stay</span></h2>
-      <p>Local favorites and must-try spots in Prayagraj</p>
+      <h2>Wher<span className="underline">e to St</span>ay</h2>
+      <p>Comfortable places to rest during your visit</p>
       <div className="attraction-menu">
         {stayData.map((item) => (
           <StayCard

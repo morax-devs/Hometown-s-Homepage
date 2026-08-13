@@ -7,6 +7,8 @@ function Navbar({ tripCount }) {
       <div className="nav-links">
         <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
         <NavLink to="/attractions" className={({ isActive }) => isActive ? "active" : ""}>Attractions</NavLink>
+        <NavLink to="/restaurants" className={({ isActive }) => isActive ? "active" : ""}>Restaurants</NavLink>
+        <NavLink to="/stay" className={({ isActive }) => isActive ? "active" : ""}>Stay</NavLink>
         <NavLink to="/my-trip" className={({ isActive }) => isActive ? "active" : ""}>
           My Trip {tripCount > 0 && <span className="trip-badge">{tripCount}</span>}
         </NavLink>
