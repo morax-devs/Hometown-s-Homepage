@@ -1,9 +1,9 @@
 import Restaurants from '../components/Restaurants'
 
-function RestaurantsPage({ tripList, addToTrip }) {
+function RestaurantsPage({ tripList, addToTrip, removeFromTrip }) {
   return (
     <div>
-      <Restaurants tripList={tripList} addToTrip={addToTrip} />
+      <Restaurants tripList={tripList} addToTrip={addToTrip} removeFromTrip={removeFromTrip} />
     </div>
   )
 }

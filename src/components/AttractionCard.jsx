@@ -1,14 +1,33 @@
-function AttractionCard({ title, description, image, tripList, addToTrip }) {
-  const isAdded = tripList.includes(title)
+function AttractionCard({ item, title, description, image, tripList, addToTrip, removeFromTrip }) {
+  const currentItem = item || {
+    id: title,
+    title,
+    description,
+    image,
+    category: 'Attraction'
+  }
+  const isAdded = tripList.some(
+    (existing) => (existing.id || existing.title || existing.name) === currentItem.id
+  )
 
   return (
     <div className="attraction-column">
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <button onClick={() => addToTrip(title)} disabled={isAdded}>
-        {isAdded ? "Added ✓" : "Add to trip"}
-      </button>
+      <img src={currentItem.image} alt={currentItem.title} />
+      <h3>{currentItem.title}</h3>
+      <p>{currentItem.description}</p>
+      {isAdded ? (
+        <button
+          className="btn-trip added"
+          onClick={() => removeFromTrip && removeFromTrip(currentItem.id)}
+          title="Click to remove from your trip plan"
+        >
+          ✓ In Trip (Remove)
+        </button>
+      ) : (
+        <button className="btn-trip" onClick={() => addToTrip(currentItem)}>
+          + Add to trip
+        </button>
+      )}
     </div>
   )
 }

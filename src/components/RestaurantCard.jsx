@@ -1,15 +1,35 @@
-function RestaurantCard({ name, cuisine, price,location, description, image, tripList, addToTrip }) {
-  const isAdded = tripList.includes(name)
+function RestaurantCard({ item, name, cuisine, price, location, description, image, tripList, addToTrip, removeFromTrip }) {
+  const currentItem = item || {
+    id: name,
+    title: name,
+    category: 'Restaurant',
+    image,
+    subtitle: `${location} • ${cuisine} • ${price}`,
+    description
+  }
+  const isAdded = tripList.some(
+    (existing) => (existing.id || existing.title || existing.name) === currentItem.id
+  )
 
   return (
     <div className="attraction-column">
-      <img src={image} alt={name} />
-      <h3>{name}</h3>
-      <p className="tag">{location} • {cuisine} • {price}</p>
-      <p>{description}</p>
-      <button onClick={() => addToTrip(name)} disabled={isAdded}>
-        {isAdded ? "Added ✓" : "Add to trip"}
-      </button>
+      <img src={currentItem.image} alt={currentItem.title} />
+      <h3>{currentItem.title}</h3>
+      <p className="tag">{currentItem.subtitle}</p>
+      <p>{currentItem.description}</p>
+      {isAdded ? (
+        <button
+          className="btn-trip added"
+          onClick={() => removeFromTrip && removeFromTrip(currentItem.id)}
+          title="Click to remove from your trip plan"
+        >
+          ✓ In Trip (Remove)
+        </button>
+      ) : (
+        <button className="btn-trip" onClick={() => addToTrip(currentItem)}>
+          + Add to trip
+        </button>
+      )}
     </div>
   )
 }
